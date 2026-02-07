@@ -21,7 +21,9 @@ yarn-error.log*
 Thumbs.db
 
 # Pasta de vídeos (opcional)
-server/videos/*.mp4
+server/uploads/videos/*.mp4
+database.sqlite
+*.sqlite
 
 # VS Code
 .vscode/
