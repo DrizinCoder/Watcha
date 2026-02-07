@@ -1,17 +1,17 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:4000',
+    baseURL: 'http://localhost:3030/api',
 })
 
 export const videoService = {
     getAll: async () => {
-        const response = await api.get('/videos');
+        const response = await api.get('/video');
         return response.data
     },
 
     getById: async (id: string) => {
-        const response = await api.get(`/videos/${id}`)
+        const response = await api.get(`/video/${id}/play`)
         response.data;
     },
 
@@ -19,10 +19,10 @@ export const videoService = {
         const formData = new FormData();
         formData.append('video', file);
         formData.append('title', title);
-        formData.append('image-url', image);
+        formData.append('image_url', image);
         formData.append('description', description);
     
-        const response = await api.post('/videos', formData, {
+        const response = await api.post('/video', formData, {
             headers: {'Content-type': 'multipart/form-data'}
         });
 

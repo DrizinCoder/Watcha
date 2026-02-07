@@ -6,14 +6,14 @@ import { videoService } from "@/services/api"
 interface VideoProps {
   id: string;
   title: string;
-  thumb: string;
+  image_url: string;
 }
 
 export const HomeSection = () => {
     const [videos, setVideos] = useState([])
 
     useEffect(() => {
-      videoService.getAll().then(data => setVideos(data)).catch(err => console.error("Back-end ainda tá off", err))
+      videoService.getAll().then(data => setVideos(data.videos)).catch(err => console.error("Back-end ainda tá off", err))
     }, [])
 
     return (
@@ -25,7 +25,7 @@ export const HomeSection = () => {
             <Link href={`/watch/${video.id}`} key={video.id}>
               <VideoCard 
                 title={video.title}
-                thumbnail={video.thumb}
+                thumbnail={video.image_url}
               />
             </Link>
           ))}
