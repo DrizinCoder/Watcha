@@ -3,13 +3,11 @@
 interface VideoCardProps {
     title: string;
     thumbnail: string;
-    onClick: () => void;
 }
 
-export const VideoCard = ({title, thumbnail, onClick}: VideoCardProps) => {
+export const VideoCard = ({title, thumbnail}: VideoCardProps) => {
     return (
         <div 
-            onClick={onClick}
             className="group cursor-pointer rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 hover:border-purple-500/50 hover:scale-105 transition-all duration-300 shadow-lg"
             >
             <div className="relative aspect-video overflow-hidden">
@@ -24,7 +22,7 @@ export const VideoCard = ({title, thumbnail, onClick}: VideoCardProps) => {
                         style={{ clipPath: 'circle(50% at 50% 50%)' }}
                     >
                         <div 
-                            className="w-4 h-4 bg-white" 
+                            className="w-4 h-4 bg-white"
                             style={{ clipPath: 'polygon(0% 0%, 0% 100%, 100% 50%)' }}
                         />
                     </div>

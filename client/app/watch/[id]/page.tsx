@@ -15,7 +15,6 @@ export default function WatchVideo() {
       <Navbar />
       
       <main className="max-w-6xl mx-auto p-4 lg:p-8">
-        {/* Botão de Voltar */}
         <Link 
           href="/" 
           className="flex items-center gap-2 text-zinc-400 hover:text-white mb-6 transition-colors w-fit"
@@ -23,18 +22,14 @@ export default function WatchVideo() {
           <ArrowLeft className="w-5 h-5" />
           <span>Voltar para a galeria</span>
         </Link>
-
-        {/* Player de Vídeo */}
         <div className="bg-black rounded-2xl overflow-hidden shadow-2xl border border-zinc-800 aspect-video">
           <video 
-            src={videoUrl} 
+            key={videoUrl}
             controls 
-            autoPlay 
             className="w-full h-full"
+            preload="metadata"
           />
         </div>
-
-        {/* Detalhes do Vídeo */}
         <div className="mt-8">
           <h1 className="text-3xl font-bold tracking-tight">
             Reproduzindo: {videoId}

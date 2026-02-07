@@ -1,3 +1,4 @@
+import Link from "next/link"
 import { VideoCard } from "../ui/videoCard/videoCard"
 
 const videos = [
@@ -13,12 +14,12 @@ export const HomeSection = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {videos.map(video => (
-            <VideoCard 
-              key={video.id}
-              title={video.title}
-              thumbnail={video.thumb}
-              onClick={() => console.log('Abrir vídeo', video.id)}
-            />
+            <Link href={`/watch/${video.id}`} key={video.id}>
+              <VideoCard 
+                title={video.title}
+                thumbnail={video.thumb}
+              />
+            </Link>
           ))}
         </div>
     </div>
