@@ -26,6 +26,7 @@ export const HomeSection = () => {
               <VideoCard 
                 title={video.title}
                 thumbnail={video.image_url}
+                id={video.id}
               />
             </Link>
           ))}

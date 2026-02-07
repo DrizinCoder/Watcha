@@ -11,8 +11,8 @@ export const videoService = {
     },
 
     getById: async (id: string) => {
-        const response = await api.get(`/video/${id}/play`)
-        response.data;
+        const response = await api.get(`/video/?id=${id}`)
+        return response.data;
     },
 
     upload: async (file: File, title: string, image: string, description: string) => {

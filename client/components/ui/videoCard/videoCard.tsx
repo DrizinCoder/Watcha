@@ -3,9 +3,10 @@
 interface VideoCardProps {
     title: string;
     thumbnail: string;
+    id: string
 }
 
-export const VideoCard = ({title, thumbnail}: VideoCardProps) => {
+export const VideoCard = ({title, thumbnail, id}: VideoCardProps) => {
     return (
         <div 
             className="group cursor-pointer rounded-xl overflow-hidden bg-zinc-900 border border-zinc-800 hover:border-purple-500/50 hover:scale-105 transition-all duration-300 shadow-lg"
