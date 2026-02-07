@@ -30,6 +30,21 @@ class SQLiteVideoRepository implements IVideoRepository {
 
     return rows;
   }
+
+  async getByID(id: number): Promise<VideoDTO | null> {
+    const db = await SQLiteConnection.getInstance();
+
+    const video = await db.get<VideoDTO>(
+      `
+    SELECT id, title, description, image_url, path
+    FROM videos
+    WHERE id = ?
+    `,
+      [id],
+    );
+
+    return video ?? null;
+  }
 }
 
 export { SQLiteVideoRepository };

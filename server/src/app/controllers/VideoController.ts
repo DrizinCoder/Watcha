@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { DIVideoRepository } from "../containers/DIVideoRepository";
 import { NotFoundError, ValidationError } from "../../infra/errors/CustomError";
+import { StreamService } from "../../core/services/StreamService";
 
 class VideoController {
   private _get = DIVideoRepository.getGetUseCase();
@@ -28,7 +29,7 @@ class VideoController {
         title,
         description,
         image_url,
-        path: `uploads/videos/${file.filename}`,
+        path: `${file.filename}`,
       });
 
       return res.status(201).json({
@@ -71,14 +72,14 @@ class VideoController {
       const { id } = req.params;
 
       if (!id) {
-        throw new NotFoundError(`ID do vídeo não informado!`);
+        throw new NotFoundError("ID do vídeo não informado!");
       }
 
-      const video = await this._getByID.execute(id as string);
+      const videoPath = await this._play.execute(id as string);
 
-      return res.status(206).json({ video: video });
+      StreamService.streamVideo(req, res, videoPath);
     } catch (e) {
-      return next(e);
+      next(e);
     }
   }
 }

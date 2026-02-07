@@ -13,7 +13,7 @@ router.get("/:id", (req: Request, res: Response, next: NextFunction) => {
   controller.getByID(req, res, next);
 });
 
-router.get("/play/:id", (req: Request, res: Response, next: NextFunction) => {
+router.get("/:id/play", (req: Request, res: Response, next: NextFunction) => {
   controller.play(req, res, next);
 });
 

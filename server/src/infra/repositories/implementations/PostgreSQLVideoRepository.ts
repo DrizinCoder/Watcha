@@ -2,6 +2,9 @@ import { CreateVideoDTO, VideoDTO } from "../../../core/DTOs/videoDTOs";
 import { IVideoRepository } from "../../../core/interfaces/IVideoRepository";
 
 class PostgreSQLVideoRepository implements IVideoRepository {
+  getByID(id: number): Promise<VideoDTO | null> {
+    throw new Error("Method not implemented.");
+  }
   get(): Promise<VideoDTO[]> {
     throw new Error("Method not implemented.");
   }
