@@ -1,11 +1,11 @@
 import { IVideoRepository } from "../../interfaces/IVideoRepository.js";
 
-class GetByID {
+class Play {
   constructor(private _repository: IVideoRepository) {}
 
-  async execute(id: string): Promise<void> {
+  async execute(): Promise<void> {
     return;
   }
 }
 
-export { GetByID };
+export { Play };

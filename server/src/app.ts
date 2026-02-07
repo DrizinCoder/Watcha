@@ -10,10 +10,8 @@ const startDB = async () => {
   await SQLiteConnection.getInstance();
 };
 
-startDB();
-
 try {
-  SQLiteConnection.getInstance();
+  startDB();
 
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
@@ -23,7 +21,7 @@ try {
     }),
   );
 
-  app.use("/api", router);
+  app.use(router);
 
   app.use(errorMiddleware);
 } catch (error) {

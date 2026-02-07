@@ -1,10 +1,11 @@
-import { VideoRepository } from "../../repositories/VideoRepository";
+import { VideoDTO } from "../../DTOs/videoDTOs";
+import { IVideoRepository } from "../../interfaces/IVideoRepository";
 
 class Get {
-  constructor(private _repository: VideoRepository) {}
+  constructor(private _repository: IVideoRepository) {}
 
-  async execute(): Promise<void> {
-    return;
+  async execute(): Promise<VideoDTO[]> {
+    return await this._repository.get();
   }
 }
 

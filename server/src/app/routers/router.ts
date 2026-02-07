@@ -5,6 +5,6 @@ import { videoRoutes } from "./video.routes";
 const router = Router();
 
 router.use(defaultRoutes);
-router.use("/video", videoRoutes);
+router.use("/api/video", videoRoutes);
 
 export { router };

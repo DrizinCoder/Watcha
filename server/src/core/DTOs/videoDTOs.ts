@@ -1,4 +1,4 @@
-interface IVideo {
+interface VideoDTO {
   id: number;
   title: string;
   description: string;
@@ -6,4 +6,11 @@ interface IVideo {
   path: string;
 }
 
-export { IVideo };
+interface CreateVideoDTO {
+  title: string;
+  description?: string;
+  image_url?: string;
+  path: string;
+}
+
+export { VideoDTO, CreateVideoDTO };
