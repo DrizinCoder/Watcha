@@ -1,3 +1,5 @@
+'use client'
+
 export const Input = (props: any) => (
   <input 
     {...props}
