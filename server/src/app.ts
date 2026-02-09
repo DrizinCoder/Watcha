@@ -21,8 +21,8 @@ try {
     }),
   );
 
+  app.use("/streams", express.static("uploads/hls"));
   app.use(router);
-
   app.use(errorMiddleware);
 } catch (error) {
   console.log("Erro: ", error);

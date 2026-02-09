@@ -2,6 +2,7 @@ import { NextFunction, Request, Response } from "express";
 import { DIVideoRepository } from "../containers/DIVideoRepository";
 import { NotFoundError, ValidationError } from "../../infra/errors/CustomError";
 import { StreamService } from "../../core/services/StreamService";
+import { VideoProcessor } from "../../core/services/VideoProcessor";
 
 class VideoController {
   private _get = DIVideoRepository.getGetUseCase();
@@ -30,6 +31,17 @@ class VideoController {
         description,
         image_url,
         path: `${file.filename}`,
+      });
+
+      if (!id) {
+        throw new ValidationError(
+          "Erro ao salvar informações no banco de dados!",
+        );
+      }
+
+      VideoProcessor.getInstance().enqueue({
+        videoId: id.toString(),
+        inputPath: file.path,
       });
 
       return res.status(201).json({
